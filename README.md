@@ -34,5 +34,51 @@ global_namespace.commit() # 应用diff，将内容协会原始文件。
 ```
 
 ## 参考文档Referance
-该模块依赖clang模块，clang
-核心模块是cpp_refactor，
+该模块依赖Python的clang包。具体请查看clang包的安装。
+
+核心模块是cpp_refactor，该模块提供统一并且简单的接口实现C++代码的重构。
+
+### `parse_files(*files, **kwargs)`
+该函数对一系列的文件进行处理，files为各个文件，kwargs为传递给编译器的参数。
+
+返回类`Namespace`，代表全局命名空间。
+
+### class Scope
+代码块。
+
+方法列表
+
+#### name()
+获取本命名空间的名字
+
+#### code()
+获取对应的代码
+
+#### attr()
+获取代码的属性
+
+#### `Scope.__getitem__(name)`
+根据命名或者索引获取子C++元素。
+
+
+下面是修改的方法
+#### append/insert
+插入子元素
+
+#### replace
+将自己替换掉
+
+#### delete
+删除自己
+
+
+### class Namespace(Scope)
+
+### class Class(Scope)
+
+### class Function(Scope)
+
+### class Method(Function)
+
+### 
+
